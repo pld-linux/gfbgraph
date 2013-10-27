@@ -5,12 +5,12 @@
 Summary:	GObject library for Facebook Graph API
 Summary(pl.UTF-8):	Biblioteka GObject do API Facebook Graph
 Name:		gfbgraph
-Version:	0.2
+Version:	0.2.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	57c2505729b9c91818067b2453fb39b6
+# Source0-md5:	be2b05ad28898f760d0ec792df2bba90
 URL:		https://github.com/alvaropg/gfbgraph
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gnome-online-accounts-devel >= 1.0
