@@ -5,16 +5,17 @@
 Summary:	GObject library for Facebook Graph API
 Summary(pl.UTF-8):	Biblioteka GObject do API Facebook Graph
 Name:		gfbgraph
-Version:	0.2.1
+Version:	0.2.2
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	be2b05ad28898f760d0ec792df2bba90
+# Source0-md5:	af796932cec99e6da8e21174caf28ee3
 URL:		https://github.com/alvaropg/gfbgraph
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gnome-online-accounts-devel >= 1.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
+BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	json-glib-devel
 BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	pkgconfig
@@ -58,12 +59,24 @@ Static GFBGraph library.
 %description static -l pl.UTF-8
 Statyczna biblioteka GFBGraph.
 
+%package apidocs
+Summary:	API documentation for GFBGraph library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki GFBGraph
+Group:		Documentation
+
+%description apidocs
+API documentation for GFBGraph library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki GFBGraph.
+
 %prep
 %setup -q
 
 %build
 %configure \
-	%{!?with_static_libs:--disable-static}
+	%{!?with_static_libs:--disable-static} \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -102,3 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libgfbgraph-0.2.a
 %endif
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/gfbgraph
