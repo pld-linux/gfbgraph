@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
-#
+
 Summary:	GObject library for Facebook Graph API
 Summary(pl.UTF-8):	Biblioteka GObject do API Facebook Graph
 Name:		gfbgraph
 Version:	0.2.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
@@ -63,6 +63,9 @@ Statyczna biblioteka GFBGraph.
 Summary:	API documentation for GFBGraph library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki GFBGraph
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for GFBGraph library.
