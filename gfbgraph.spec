@@ -5,19 +5,22 @@
 Summary:	GObject library for Facebook Graph API
 Summary(pl.UTF-8):	Biblioteka GObject do API Facebook Graph
 Name:		gfbgraph
-Version:	0.2.3
-Release:	2
+Version:	0.2.4
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
-# Source0-md5:	81f216f637b40dc9b3a7298651305763
+# Source0-md5:	c38af63e49f8fe8baad99537956b69ba
 URL:		https://github.com/alvaropg/gfbgraph
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gnome-online-accounts-devel >= 1.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	json-glib-devel
 BuildRequires:	libsoup-devel >= 2.4
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
 BuildRequires:	rest-devel >= 0.7
 BuildRequires:	tar >= 1:1.22
@@ -63,7 +66,7 @@ Statyczna biblioteka GFBGraph.
 Summary:	API documentation for GFBGraph library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki GFBGraph
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -77,7 +80,15 @@ Dokumentacja API biblioteki GFBGraph.
 %setup -q
 
 %build
+%{__gtkdocize}
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
+	--enable-gtk-doc \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
