@@ -66,9 +66,7 @@ Statyczna biblioteka GFBGraph.
 Summary:	API documentation for GFBGraph library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki GFBGraph
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for GFBGraph library.
